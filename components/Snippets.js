@@ -11,14 +11,21 @@ const Snippets = ({ fbUser }) => {
 
   const getSnippets = async () => {
     if (!fbUser) return;
-    const querySnapshot = await getDocs(collection(db, "users", fbUser.id, "snippets"));
+    const querySnapshot = await getDocs(collection(db, "users", fbUser.id, "snippets")).then((querySnapshot) => {
+      setSnippets(querySnapshot.docs);
+      console.log(querySnapshot.docs);
+      setLoading(false);
+    }).catch((error) => {
+      console.log(error);
+      setLoading(false);
+    });
     // querySnapshot.forEach((doc) => {
     //   setSnippets([...snippets, doc.data()]);
     //   console.log(doc.data());
     // })
     // console.log(querySnapshot);
-    setSnippets(querySnapshot.docs)
-    setLoading(false);
+    // setSnippets(querySnapshot.docs)
+    // setLoading(false);
   };
 
   console.log(snippets, "sss");

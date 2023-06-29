@@ -7,7 +7,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDcvAc5fklF41p1VYKfC0Wy5X6NfJ_8QVI",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "zencodezone.firebaseapp.com",
   projectId: "zencodezone",
   storageBucket: "zencodezone.appspot.com",
